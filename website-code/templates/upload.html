@@ -1,0 +1,105 @@
+<!doctype html>
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+  <title>Deep Learning Face Mask Detector</title>
+  <style>
+    body {
+      font-family: 'Roboto Condensed', sans-serif;
+      color: white;
+      background: #667db6;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .title {
+      font-size: 5.5rem;
+    }
+
+    .subheading {
+      font-size: 2.3rem
+    }
+
+    .input-button {
+      font-size: 2.4rem;
+      display: inline-block;
+      float: left;
+      background-color: #efefef;
+      border-top-left-radius: 40px;
+      border-bottom-left-radius: 40px;
+      border: none;
+    }
+
+    .image-size {
+      width: 500px;
+      height: auto;
+    }
+
+    .blob {
+      background: #3f8c48;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to left, #45B649, #4d9031);
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to left, #45B649, #20891e);
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+      transform: scale(1);
+      animation: pulse 2s;
+      width: 100%;
+      height: 9rem;
+
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.90);
+        box-shadow: 0 0 0 0 rgba(0, 150, 0, 0.9);
+      }
+
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 25px rgba(0, 200, 0, .3);
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 200, 0, 0);
+      }
+    }
+  </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+</head>
+
+<body>
+  <div class="jumbotron bg-cover text-white"
+    style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(https://www.bioworld.com/ext/resources/Stock-images/Therapeutic-topics/Infectious/Coronavirus-pandemic2.png?1583952784)">
+    <div class="container text-center">
+      <h1 class="display-4 title pt-4">Deep Learning Mask Detection</h1>
+      <hr class="mt-4">
+      <p class="mt-4 subheading pb-4 mb-0">Upload an image and our deep learning model will determine whether or not you
+        are wearing a mask.</p>
+    </div>
+  </div>
+
+   {% if filename %} <div>
+    <img class="image-size rounded mx-auto d-block" src="{{ url_for('display_image', filename=filename) }}">
+  </div> {% endif %} <form method="post" action="/" enctype="multipart/form-data">
+    <div class="btn-group center text-center" style="align-items: center; display: flex; border:none">
+      <input class="input-button" type="file" name="file" autocomplete="off" required>
+      <button style="font-size: 2.1rem; background-color: #efefef;" type="submit" value="Submit"
+        class="btn btn-light btn-rounded" data-mdb-ripple-color="dark">Submit</button>
+    </div>
+  </form>
+  </div>
